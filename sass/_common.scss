@@ -1,0 +1,219 @@
+@use './config' as c;
+
+/*===============================================
+common
+===============================================*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  // outline: 1px solid magenta;
+}
+
+body {
+  font-family: c.$font-family;
+  background: c.$color-base;
+  color: c.$color-text-black;
+  line-height: 1;
+  font-weight: 400;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+li, dd {
+  list-style-type: none;
+}
+
+a {
+  color: c.$color-base;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  transition: .3s;
+
+  &:hover {
+    opacity: .6;
+  }
+  // &:focus {
+  //   outline: none;
+  // }
+}
+
+img {
+  border: none;
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+address {
+  font-style: normal;
+}
+
+.container {
+  max-width: 1366px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.inner {
+  max-width: 1056px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  margin-top: 120px;
+  
+  @include c.mq('tab') {
+    margin-top: 160px;
+  }
+}
+.section-heading {
+  @include c.fz(32);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+
+  @include c.mq('tab') {
+    @include c.fz(48);
+    margin-bottom: 23px;
+  }
+}
+.section-heading__sub {
+  @include c.fz(20);
+  font-weight: 500;
+  color: c.$color-main;
+  margin-left: 15px;
+  
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 22px;
+    background: c.$color-main;
+    transform: rotate(40deg);
+    margin-right: 15px;
+  }
+
+  @include c.mq('tab') {
+    @include c.fz(24);
+    margin-left: 18px;
+
+    &::before {
+      height: 28px;
+      margin-right: 20px;
+    }
+  }
+}
+.section-title {
+  @include c.fz(24);
+  line-height: 1.55;
+  font-weight: 500;
+
+  @include c.mq('tab') {
+    @include c.fz(32);
+    // line-height: 1.5;
+  }
+}
+
+.section-text {
+  @include c.fz(14);
+  line-height: 2;
+  letter-spacing: .02em;
+
+  @include c.mq('tab') {
+    @include c.fz(16);
+  }
+
+}
+
+/* SP用のスタイル */
+.sp-only {
+  display: block;
+}
+.pc-only {
+  display: none;
+}
+/* PC用のスタイル */
+@include c.mq('tab') {
+  .sp-only {
+    display: none;
+  }
+  .pc-only {
+    display: block;
+  }
+}
+
+/* ボタン */
+.btn {
+  appearance: none;
+  display: inline-block;
+  border: 1px solid transparent;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+  color: c.$color-base;
+  font-size: c.fz(14);
+  padding: 1em 0;
+  white-space: nowrap;
+  width: 100%;
+  transition: .3s;
+
+  @include c.mq('tab') {
+    font-size: c.fz(16);
+    padding: 1.44em 0;
+  }
+
+  &--default {
+    background: c.$color-main;
+    box-shadow: 0px 2px 4px 0 rgba(c.$color-accent-blue, 0.46);
+    max-width: 256px;
+  }
+
+  &--primary {
+    background: c.$color-accent-red;
+    box-shadow: 0px 2px 4px 0 rgba(c.$color-accent-black, 0.46);
+  }
+  &--secondary {
+    background: c.$color-accent-black;
+    box-shadow: 0px 2px 4px 0 rgba(c.$color-accent-black, 0.46);
+  }
+
+  &--large {
+    max-width: 335px;
+    padding: 1.1em 0;
+
+    @include c.mq('tab') {
+      max-width: 320px;
+      padding: 1.7em 0;
+    }
+  }
+
+  &--arrow {
+    position: relative;
+    &::after{
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 4px;
+      border-bottom: 1px solid c.$color-base;
+      border-right: 1px solid c.$color-base;
+      position: absolute;
+      top: 50%;
+      transform: skew(45deg) translateY(-60%);
+      margin-left: 10px;
+
+      @include c.mq('tab') {
+        margin-left: 17px; 
+      }
+    }
+  }
+}

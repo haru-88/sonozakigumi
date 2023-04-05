@@ -1,0 +1,43 @@
+@use './config' as c;
+/*===============================================
+loading
+===============================================*/
+#loading {
+  width: 100vw;
+  height: 100vh;
+  background: c.$color-main;
+  transition: all 1s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// .loaded {
+//   opacity: 0;
+//   visibility: hidden;
+// }
+
+// cssアニメーション
+.loader {
+    width: 300px;
+    height: 300px;
+    background: url(../img/logo-w.svg) no-repeat center center /contain;
+    animation: fadeUp 0.5s forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+    transform: translateY(100px);
+    }
+  
+    to {
+      opacity: 1;
+    transform: translateY(0);
+    }
+  }

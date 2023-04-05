@@ -1,0 +1,43 @@
+//ブレイクポイント
+$breakpoints: (
+	"sp": "(min-width: 567px)",
+	"tab-down": "(max-width: 767px)",
+  "tab": "(min-width: 768px)",
+	"pc-down": "(max-width: 991px)",
+	"pc": "(min-width: 992px)",
+	"pc-up": "(min-width: 1200px)",
+
+) !default;
+
+// メディアクエリー
+@mixin mq($breakpoint: sp) {
+	@media screen and #{map-get($breakpoints, $breakpoint)} {
+		@content;
+	}
+}
+
+// フォント
+$font-family: 'Lato', 'Noto Sans JP','Helvetica','Arial','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic',sans-serif;
+
+// @mixin ffe() {
+// 	font-family: $font-family-en;
+// 	font-weight: 500;
+// }
+
+//font-size
+@mixin fz($font-size) {
+	font-size: ($font-size / 16) + rem;
+}
+@function fz($font-size) {
+	@return ($font-size / 16) + rem;
+}
+
+//カラー
+$color-base: #fff;
+$color-sub: #f0f0f0;
+$color-main: #4b6cb7;
+$color-accent-blue: #182848;
+$color-accent-red: #b8614b;
+$color-accent-black: #191919;
+$color-text-black: #191919;
+

@@ -1,0 +1,137 @@
+@use './config' as c;
+
+/*===============================================
+works
+===============================================*/
+.works {
+  padding: 26px 0 39px;
+  background: linear-gradient(-65deg, c.$color-sub 0%, c.$color-sub 12.2%, c.$color-base 12.2%, c.$color-base 87.8%, c.$color-sub 87.8%, c.$color-sub 100%);
+
+  .section-text {
+    margin-top: 14px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+  }
+
+  &-card {
+    &__img {
+      position: relative;
+
+      img {
+        aspect-ratio: 375 / 160;
+        width: 100vw;
+      }
+    }
+
+    &__label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      span {
+        display: inline-block;
+        background: c.$color-accent-blue;
+        padding: 10px 20.5px;
+        @include c.fz(20);
+        font-weight: 500;
+        text-align: center;
+      }
+    }
+
+    &__body {
+      padding: 23px 0 33px;
+      text-align: left;
+    }
+
+    &__title {
+      color: c.$color-accent-red;
+      @include c.fz(20);
+      font-weight: 500;
+    }
+
+    &__text {
+      color: c.$color-text-black;
+      @include c.fz(14);
+      line-height: 2;
+      letter-spacing: .02em;
+      margin-top: 15px;
+    }
+  }
+
+  &__button {
+    text-align: center;
+  }
+
+  @include c.mq('tab-down') {
+    &-card__img {
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+    }
+  }
+
+  @include c.mq('tab') {
+    padding: 0;
+    background: linear-gradient(49.3deg, c.$color-sub 0%, c.$color-sub 17.3%, c.$color-base 17.3%, c.$color-base 82.5%, c.$color-sub 82.5%, c.$color-sub 100%);
+    text-align: center;
+
+    .inner {
+      margin-top: -5px;
+    }
+
+    .section-text {
+      margin-top: 22px;
+    }
+    
+    &__content {
+      flex-direction: row;
+      justify-content: flex-end;
+      column-gap: 32px;
+      margin-top: 49px;
+    }
+
+    &-card {
+      width: 46.457%;
+      box-shadow: 0 0 10px rgba(c.$color-accent-black, .25);
+      margin-right: 8px;
+
+      &__img {
+        img {
+          aspect-ratio: 472 / 240;
+        }
+      }
+
+      &__label {
+        position: absolute;
+        top: -16px;
+        left: -16px;
+  
+        span {
+          padding: 16px 14px;
+          @include c.fz(24);
+        }
+      }
+  
+      &__body {
+        padding: 30px 22px 28px;
+        background: c.$color-base;
+      }
+  
+      &__title {
+        @include c.fz(24);
+      }
+  
+      &__text {
+        @include c.fz(16);
+        margin-top: 21px;
+      }
+    }
+  
+    &__button {
+      margin-top: 40px;
+    }
+  }
+}

@@ -1,0 +1,246 @@
+@use './config' as c;
+
+/*===============================================
+mv
+===============================================*/
+.mv {
+  &__slide {
+    position: relative;
+    width: 100%;
+    height: 611px;
+    overflow: hidden;
+
+    @include c.mq('pc') {
+      height: 688px;
+    }
+  }
+
+  &__slideImg {
+    
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      animation: slider 24s linear infinite;
+    }
+    
+    &:nth-of-type(1) img {
+      animation-delay: -2s;
+    }
+    &:nth-of-type(2) img {
+      animation-delay: 6s;
+    }
+    &:nth-of-type(3) img {
+      animation-delay: 14s;
+    }
+  }
+}
+@keyframes slider {
+	0% { 
+    opacity: 0;
+  }
+	4.16% {
+    opacity: 1; //1秒後
+  }
+	33.33% {
+    opacity: 1; //8秒後
+  }
+  41.66% {
+    opacity: 0; //10秒後
+  }
+  100% {
+  opacity: 0; //24秒後
+  }
+}
+
+.mv {
+  background: linear-gradient(90deg, c.$color-main 0%, c.$color-accent-blue 100%);
+  height: 611px;
+  position: relative;
+  
+  &-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__title {
+    text-transform: uppercase;
+    color: c.$color-base;
+    font-weight: 900;
+    @include c.fz(48);
+    line-height: 1.21;
+    letter-spacing: 0.023em;
+    text-shadow: 4.2px 4.2px 4px rgba(c.$color-accent-blue, .5);
+    margin-top: 72px;
+  }
+
+  &__lead {
+    width: fit-content;
+    color: c.$color-accent-blue;
+    font-weight: 700;
+    @include c.fz(19.5);
+    letter-spacing: 0.02em;
+    padding: 0.4em 0.75em;
+    margin-left: 10px;
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: c.$color-base;
+      transform: skew(-27deg);
+      box-shadow: 5px 5px 0 c.$color-accent-blue;
+      z-index: -1;
+    }
+    &:nth-of-type(1) {
+      margin-top: 20px;
+    }
+    &:nth-of-type(2) {
+      margin-top: 15px;
+    }
+  }
+
+  @include c.mq('pc') {
+    height: 688px;
+
+    &__title {
+      @include c.fz(96);
+      margin-top: 83px;
+    }
+
+    &__lead {
+      @include c.fz(32);
+      letter-spacing: -0.005em;
+      padding: 0.5em 0.8em;
+      margin-left: 25px;
+
+      &::before {
+        transform: skew(-39deg);
+        box-shadow: 9px 4px 0 c.$color-accent-blue;
+      }
+      &:nth-of-type(1), &:nth-of-type(2) {
+        margin-top: 16px;
+      }
+    }
+  }
+}
+
+.news {
+  @include c.fz(14);
+  margin-top: 155px;
+
+  ._open & {
+    display: none;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+    border: solid 1px c.$color-accent-blue;
+    background: c.$color-base;
+    padding-left: 8px;
+    height: 48px;
+    position: relative;
+  }
+
+  &__heading {
+    @include c.fz(14);
+    text-transform: uppercase;
+    color: c.$color-base;
+    background: c.$color-accent-blue;
+    width: 75px;
+    padding: 4px 22px 5px 12px;
+    clip-path: polygon(0 0, 83% 0, 100% 100%, 0% 100%);
+    position: absolute;
+    top: -23px;
+    left: -1px;
+  }
+
+  &__pablished {
+    line-height: 1.4;
+    font-family: 'Noto Sans JP';
+  }
+
+  &__label {
+    @include c.fz(12);
+    color: c.$color-base;
+    background: c.$color-accent-red;
+    text-align: center;
+    padding: 0.3em 0.7em;
+    border-radius: 8px;
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    height: inherit;
+    flex-grow: 1;
+  }
+
+  &__title {
+    color: c.$color-text-black;
+  }
+
+  @include c.mq('pc') {
+    @include c.fz(16);
+    margin-top: 118px;
+
+    &__heading {
+      @include c.fz(16);
+      width: 17.22%;
+      padding: 24px 41px;
+      clip-path: polygon(0 0, 100% 0, 69% 100%, 0% 100%);
+      top: -1px;
+      bottom: -1px;
+    }
+
+    &__content {
+      column-gap: 24px;
+      padding-left: 199px;
+      height: 64px;
+    }
+  
+    &__pablished {
+      line-height: 1.4;
+    }
+  
+    &__label {
+      @include c.fz(12);
+      padding: 0.7em 1.3em;
+    }
+
+    &__arrow {
+      background: c.$color-accent-blue;
+      width: 11.8%;
+      clip-path: polygon(46% 0, 100% 0, 100% 100%, 0% 100%);
+      position: absolute;
+      top: -1px;
+      bottom: -1px;
+      right: 0;
+
+      &::after {
+        content: "";
+        width: 16px;
+        height: 4px;
+        border-bottom: 1px solid c.$color-base;
+        border-right: 1px solid c.$color-base;
+        transform: skew(45deg) translateX(12px);
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+      }
+    }  
+  }
+}

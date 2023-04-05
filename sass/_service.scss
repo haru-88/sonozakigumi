@@ -1,0 +1,68 @@
+@use './config' as c;
+
+/*===============================================
+service
+===============================================*/
+.service {
+  background: linear-gradient(-65deg, c.$color-sub 0%, c.$color-sub 8.9%, c.$color-base 8.9%, c.$color-base 40.7%, c.$color-sub 40.7%, c.$color-sub 100%) no-repeat;
+  padding-bottom: 49px;
+  
+  &-inner {
+    display: flex;
+    flex-direction: column-reverse;
+
+  }
+  &__content {
+    margin-top: 35px;
+    padding: 0 20px;
+
+    .section-title {
+      margin-bottom: 17px;
+    }
+  }
+
+  &__button {
+    margin-top: 29px;
+    text-align: center;
+  }
+
+  &__img {
+    img {
+      aspect-ratio: 375 / 248;
+      object-fit: cover;
+    }
+  }
+  
+  @include c.mq('pc') {
+    padding-bottom: 0;
+    background: linear-gradient(-49.5deg, c.$color-sub 0%, c.$color-sub 10%, c.$color-base 10%, c.$color-base 31.5%, c.$color-sub 31.5%, c.$color-sub 100%) no-repeat;
+    background-size: 100vw 90.6%;
+
+    &-inner {
+      flex-direction: row-reverse;
+      justify-content: start;
+    }
+    &__content {
+      padding: 0 16px 0 48px;
+      width: 43%;
+
+      .section-title {
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+    }
+  
+    &__button {
+      margin-top: 41px;
+      text-align: left;
+    }
+  
+    &__img {
+      margin-top: 40px;
+      img {
+        aspect-ratio: 620 / 440;
+        width: 620px;
+      }
+    }
+  }
+}

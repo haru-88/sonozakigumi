@@ -1,0 +1,71 @@
+@use './config' as c;
+
+/*===============================================
+about
+===============================================*/
+.about {
+
+  &-inner {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  &__content {
+    background: c.$color-base;
+    margin-top: 35px;
+  }
+
+  @include c.mq('pc-down') {
+    &__button {
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    &__img {
+      display: none;
+    }
+
+    &__bgImg {
+      img {
+        aspect-ratio: 335 / 248;
+      }
+    }
+  }
+
+  @include c.mq('pc') {
+    position: relative;
+
+    &__content {
+      width: min(46%, 504px);
+      padding: 44px 49px;
+      margin-top: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-101%, -50%);
+    }
+
+    &__button {
+      margin-top: 37px;
+      text-align: left;
+    }
+
+    &__img {
+      margin-top: 33px;
+      img {
+        aspect-ratio: 408 / 120;
+        width: 408px;
+      }
+    }
+
+    &__bgImg {
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      img {
+        height: 656px;
+        width: 100vw;
+        object-fit: cover;
+      }
+    }
+  }
+}
